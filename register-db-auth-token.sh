@@ -1,5 +1,5 @@
 DB_AUTH_TOKEN="$1"
-RETURN_CODE=$(curl -X POST https://api.dropboxapi.com/2/users/get_current_account --header "Authorization: Bearer ${DB_AUTH_TOKEN}" --header "Content-Type: application/json" --data "null" -i -s | grep "HTTP/1.1" | awk {'print $2'})
+RETURN_CODE=$(curl -X POST https://api.dropboxapi.com/2/users/get_current_account --header "Authorization: Bearer ${DB_AUTH_TOKEN}" --header "Content-Type: application/json" --data "null" -i -s | grep "HTTP/2" | awk {'print $2'})
 
 if [ "$RETURN_CODE" = "200" ]; then
     echo "${DB_AUTH_TOKEN}" > ~/.alfred-dropbox-auth
